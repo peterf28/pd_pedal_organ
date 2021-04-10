@@ -1,0 +1,92 @@
+#N canvas 793 122 625 420 10;
+#X obj 94 352 reverb;
+#X obj 548 326 hradio 15 1 0 6 presets tasti presets 0 -8 0 10 -262144
+-1 -1 2;
+#X obj 779 36 presets;
+#X obj 547 146 tgl 15 1 s_principale16 r_principale16 principale_16'
+0 -10 0 10 -262144 -1 -1 0 1;
+#X obj 650 147 tgl 15 1 s_corno r_corno corno_inglese 0 -10 0 10 -262144
+-1 -1 1 1;
+#X obj 751 146 tgl 15 1 s_fagotto16 r_fagotto16 fagotto_16' 0 -10 0
+10 -262144 -1 -1 0 1;
+#X obj 851 146 tgl 15 1 s_principale8 r_principale8 principale_8' 0
+-10 0 10 -262144 -1 -1 1 1;
+#X obj 954 146 tgl 15 1 s_ottava4 r_ottava4 ottava_4' 0 -10 0 10 -262144
+-1 -1 0 1;
+#X obj 1047 146 tgl 15 1 s_tromba8 r_tromba8 tromba_8' 0 -10 0 10 -262144
+-1 -1 0 1;
+#X obj 1140 146 tgl 15 1 s_violabassi4 r_violabassi4 viola_bassi_4'
+0 -10 0 10 -262144 -1 -1 0 1;
+#X obj 547 189 tgl 15 1 s_flauto4 r_flauto4 flauto_4' 0 -10 0 10 -262144
+-1 -1 0 1;
+#X obj 650 189 tgl 15 1 s_ottavino r_ottavino ottavino 0 -10 0 10 -262144
+-1 -1 0 1;
+#X obj 751 189 tgl 15 1 s_duodecima r_duodecima duodecima 0 -10 0 10
+-262144 -1 -1 0 1;
+#X obj 851 189 tgl 15 1 s_cornetto r_cornetto cornetto 0 -10 0 10 -262144
+-1 -1 0 1;
+#X obj 954 189 tgl 15 1 s_voce r_voce voce 0 -10 0 10 -262144 -1 -1
+0 1;
+#X obj 1047 189 tgl 15 1 s_tromboni r_tromboni tromboni 0 -10 0 10
+-262144 -1 -1 0 1;
+#X obj 672 36 registri;
+#X obj 94 748 dac~;
+#X obj 89 535 out;
+#X obj 548 256 hradio 15 1 1 6 presetsreg tastireg presets_registers
+0 -8 0 10 -262144 -1 -1 2;
+#X obj 94 38 consolle;
+#X text 952 665 Project: Pipe Organ Emulation with Pure Data;
+#X text 952 707 Author: Nicola Simoni (nicola.simoni.89@gmail.com)
+;
+#X obj 305 589 print;
+#X floatatom 250 -30 5 0 0 0 - - -, f 5;
+#X floatatom 318 -27 5 0 0 0 - - -, f 5;
+#X obj 94 264 tremolo;
+#X obj 250 -75 netreceive 3000;
+#X obj 250 -53 unpack f f;
+#X obj 251 -9 +;
+#X floatatom 250 15 5 0 0 0 - - -, f 5;
+#X obj 288 666 adc~;
+#X obj 164 733 +~;
+#X obj 216 736 +~;
+#X obj 611 -62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 611 -42 \; pd dsp 1;
+#X obj 443 -61 loadbang;
+#X floatatom 56 -25 5 0 0 0 - - -, f 5;
+#X floatatom 100 -24 5 0 0 0 - - -, f 5;
+#X msg 96 -67 0;
+#X msg 130 -67 100;
+#X obj 58 -70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 4 -71 tester;
+#X text 443 -77 tuning - not needed?;
+#X msg 443 -36 0;
+#X floatatom 443 -11 5 0 0 0 - - -, f 5;
+#X connect 0 0 18 0;
+#X connect 0 1 18 1;
+#X connect 18 0 32 1;
+#X connect 18 1 33 0;
+#X connect 20 0 26 0;
+#X connect 24 0 29 0;
+#X connect 26 0 0 0;
+#X connect 27 0 28 0;
+#X connect 28 0 24 0;
+#X connect 28 1 25 0;
+#X connect 28 1 20 1;
+#X connect 29 0 30 0;
+#X connect 29 0 20 0;
+#X connect 31 0 32 0;
+#X connect 31 1 33 1;
+#X connect 32 0 17 0;
+#X connect 33 0 17 1;
+#X connect 34 0 35 0;
+#X connect 36 0 44 0;
+#X connect 37 0 20 0;
+#X connect 38 0 20 1;
+#X connect 39 0 38 0;
+#X connect 40 0 38 0;
+#X connect 41 0 37 0;
+#X connect 41 0 38 0;
+#X connect 44 0 45 0;
+#X connect 45 0 29 1;
