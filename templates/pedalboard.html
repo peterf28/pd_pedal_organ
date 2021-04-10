@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:height="http://www.w3.org/1999/xhtml">
+<title>Pedalboard v2.0</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/customstyle.css"/>
+</head>
+
+<header>
+    <div class="page-header">
+        <h1><a class="header-colour" href="/">Pedalboard 2</a> <small>Control</small></h1>
+    </div>
+</header>
+<body>
+<div class="container cust_cont" style="float:left">
+    <div class="container-fluid cust_cont">
+        <form id="keyform" class="form-inline" method="post" action="/loads">
+            <div class="sel_rad">
+                <select class="custom2" name="s_sel" style="">
+                    {% for o in s_list %}
+                    <option value="{{ o }}" {% if s_def==o %} selected {% endif %}>{{ o }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit" id="upd"><span
+                    class="glyphicon glyphicon-load"></span> Load Song
+            </button>
+        </form>
+    </div>
+    <form name="form1" class="form" method='POST' action="/update">
+        <div class="container-fluid cust_cont">
+            {% for h in range(7) %}
+            {% set o_loop = loop %}
+            <div class="sel_rad">
+                <select class="custom1" name="key{{ h + 1 }}">
+                    {% for o in options %}
+                    <option value="{{ o }}" {% if defaults[o_loop.index0]==o %} selected {% endif %}> {{ o }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endfor %}
+            <button name="submit" class="btn btn-primary" type="submit" style="float:right" value="Update"> Update Keys</button>
+
+        </div>
+        <div class="container-fluid cust_cont col-sm-6">
+            <a role="presentation" class="active" data-toggle="modal" data-target="#register" href="#"
+               style="float: left"><span class="glyphicon glyphicon-save"></span> Save song </a>
+            <div class="modal fade" id="register" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">New song</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control" placeholder="Song name"
+                                   name="sname" value="" style="margin-bottom:8px;line-height:30px;">
+                            <button name="submit" class="btn btn-primary" type="submit" value="Add Song">Add Song</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container-fluid cust_cont col-sm-6">
+        <a type="presentation" data-toggle="modal" data-target="#newcModal" href="#" style="float: right"><span
+                class="glyphicon glyphicon-plus"></span> New chord </a>
+        <div class="modal fade" id="newcModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel1">Add new chord</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form action="/newc" class="form-inline" method="post">
+                                <input type="text" class="form-control" placeholder="Note 1"
+                                       name="c1" value="" style="width:24%">
+                                <input type="text" class="form-control" placeholder="Note 2"
+                                       name="c2" value="" style="width:24%">
+                                <input type="text" class="form-control" placeholder="Note 3"
+                                       name="c3" value="" style="width:24%">
+                                <input type="text" class="form-control" placeholder="Note 4"
+                                       name="c4" value="" style="width:24%">
+                                <label style="margin-top:8px">
+                                    <input type="text" class="form-control" placeholder="Chord name"
+                                           name="cname" value="">
+                                    <input class="btn btn-primary float-right" type="submit" value="Add Chord">
+                                </label>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="/sustain" class="form-inline" method="post">
+        <button class="btn btn-primary float-right">Sustain</button>
+    </form>
+</div>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

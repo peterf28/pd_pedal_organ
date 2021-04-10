@@ -1,0 +1,25 @@
+.sel_rad {
+    border-radius:4px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:2px solid #cccccc;
+    vertical-align: middle
+}
+.custom1{
+    width:60px;
+    height:31px;
+    border:0px
+}
+.custom2{
+    width:200px;
+    height:31px;
+    border:0px
+}
+.cust_cont{
+    margin-bottom:6px;
+    max-width: 650px; /* or 950px */
+}
+.header-colour {
+  color: #323232 !important;
+}
